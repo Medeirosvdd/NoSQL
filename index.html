@@ -7,15 +7,46 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="Form">
-      <input type="text" id="nome" placeholder="Nome:" />
+    <h1>CRUD com Firebase</h1>
 
-      <input type="number" id="idade" placeholder="Idade:" />
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" required /><br />
 
-      <input type="text" id="cargo" placeholder="Cargo:" />
+    <label>Idade:</label>
+    <input type="number" id="idade" required /><br />
 
-      <button id="submit">Enviar</button>
+    <label for="cargo">Cargo:</label>
+    <input type="text" id="cargo" required /><br />
+
+    <button type="submit" id="btnEnviar">Enviar</button>
+
+    <h2>Listar Funcionários</h2>
+
+    <div id="listar-funcionarios">
+      <p>Carregando lista de Funcionários...</p>
     </div>
+
+ 
+    <div id="formulario-edicao" style="display: none;">
+      <h2>Editar Funcionario</h2>
+      <label for="editar-nome">Nome: </label>
+      <input type="text" id="editar-nome"><br><br>
+      
+      <label for="editar-idade">Idade: </label>
+      <input type="number" id="editar-idade"><br><br>
+      
+      <label for="editar-cargo">Nome: </label>
+      <input type="text" id="editar-cargo"><br><br>
+
+      <input type="hidden" id="editar-id"> 
+
+      <button id="btn-salvar-edicao">Salvar Alterações</button>
+      <button id="btn-cancelar-edicao">Cancelar Alterações</button>
+
+
+    </div>
+
+
     <script type="module" src="firebaseConfig.js"></script>
     <script type="module" src="script.js"></script>
   </body>
