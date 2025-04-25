@@ -3,7 +3,7 @@ import {
   collection,
   addDoc,
   getDocs,
-  deleteDo,
+  deleteDoc,
   doc,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
@@ -94,7 +94,7 @@ function renderizarListaDeFuncionarios(funcionarios) {
             <strong> Nome: </strong> ${funcionario.nome} <br>
             <strong> Idade: </strong> ${funcionario.idade} <br>
             <strong> Cargo: </strong> ${funcionario.cargo} <br>
-            <button class ="bnt-Excluir" data-id="${funcionario.id}"> Excluir </button>
+            <button class ="btn-Excluir" data-id="${funcionario.id}"> Excluir </button>
             <hr>
         `;
     listaFuncionariosDiv.appendChild(funcionarioDiv);
@@ -115,3 +115,18 @@ async function excluirfuncionario(idfuncionario) {
     return false;
   }
 }
+
+async function lidarclique(eventoDeClique) {
+  const btnExcluir = eventoDeClique.target.closest(".btn-Excluir");
+  if (btnExcluir) {
+    const idfuncionario = btnExcluir.dataset.id;
+    const exclusaoBemsucedida = await excluirfuncionario(idfuncionario);
+  
+    if(exclusaoBemsucedida){
+      carregarListaDeFuncionarios();
+      alert('funcionario excluido com sucesso!')
+    }
+  }
+  return
+}
+listaFuncionariosDiv.addEventListener("click", lidarclique)
