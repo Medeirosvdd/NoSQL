@@ -117,7 +117,10 @@ async function excluirfuncionario(idfuncionario) {
 }
 
 async function lidarclique(eventoDeClique) {
-  const btnExcluir = eventoDeClique.target.closest(".btn-Excluir");
+  const btnExcluir = eventoDeClique.target.closest(".btn-Excluir"); 
+  const certeza = confirm("Quer mesmo excluir?");
+
+  if(certeza){
   if (btnExcluir) {
     const idfuncionario = btnExcluir.dataset.id;
     const exclusaoBemsucedida = await excluirfuncionario(idfuncionario);
@@ -127,6 +130,9 @@ async function lidarclique(eventoDeClique) {
       alert('funcionario excluido com sucesso!')
     }
   }
+}else{
+  alert("Não excluido!  ");
+}
   return
 }
 listaFuncionariosDiv.addEventListener("click", lidarclique)
